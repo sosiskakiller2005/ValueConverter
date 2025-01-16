@@ -79,6 +79,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\Currency.cs" />
+    <Compile Include="Model\CurrencyService.cs" />
     <Compile Include="Model\Valute.cs" />
     <Compile Include="View\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

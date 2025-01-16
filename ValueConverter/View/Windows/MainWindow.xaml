@@ -5,9 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ValueConverter"
         mc:Ignorable="d"
-        Title="Конвертер валют" Height="450" Width="800">
-    <Grid>
-        <ListView Name="CurrencyLV">
+        Title="Конвертер валют" Height="600" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".1*" />
+            <RowDefinition Height=".7*" />
+        </Grid.RowDefinitions>
+
+        <Grid Margin="10 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".2*" />
+                <RowDefinition Height=".2*" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height=".2*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="У меня есть:"/>
+            <TextBlock Text="Хочу купить:" Grid.Column="2"/>
+            <ComboBox Name="InputCurrencyCmb" SelectionChanged="InputCurrencyCmb_SelectionChanged" Grid.Row="1"/>
+            <ComboBox Name="OutputCurrencyCmb" SelectionChanged="OutputCurrencyCmb_SelectionChanged" Grid.Row="1" Grid.Column="2"/>
+            <Border Grid.Row="3" BorderThickness="2" BorderBrush="Gray">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBox Name="SellTb" FontSize="80" FontWeight="Bold" MaxLength="10"/>
+                    <TextBlock Name="SellTbl" Grid.Row="2" Text="1 RUR = 0.0098 USD"/>
+                </Grid>
+            </Border>
+            <Border Grid.Row="3" Grid.Column="2" BorderThickness="2" BorderBrush="Gray">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBox Name="BuyTb" FontSize="80" FontWeight="Bold" MaxLength="10"/>
+                    <TextBlock Name="BuyTbl" Grid.Row="2" Text="1 RUR = 0.0098 USD"/>
+                </Grid>
+            </Border>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="5">
+                <Button Name="RefreshBtn" Content="Обновить" Click="RefreshBtn_Click"/>
+                <Border Width="20"/>
+                <Button Name="ConvertBtn" Content="Обменять" Click="ConvertBtn_Click"/>
+            </StackPanel>
+        </Grid>
+        
+        <ListView Name="CurrencyLV" Grid.Row="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}"/>
